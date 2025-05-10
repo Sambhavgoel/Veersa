@@ -1,5 +1,6 @@
 {
   "expo": {
+    "permissions": ["ACCESS_FINE_LOCATION"],
     "name": "project",
     "slug": "project",
     "version": "1.0.0",

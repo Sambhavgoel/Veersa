@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Image, StyleSheet, Text } from "react-native";
+import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -12,26 +12,42 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <Image
-        source={require("../../../assets/combined_tagline_1.png")}
-        style={styles.logo}
-      /> */}
-      <Text>welcome to mobo !!! </Text>
+      <View style={styles.img}>
+        <Image
+          source={require("../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg")}
+          style={styles.logo}
+        />
+      </View>
+      <Text style={styles.maintext}>Welcome to Innovitals !!! </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  maintext: {
+    fontSize: 25,
+    color: "green",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#F9A826",
+    // backgroundColor: "#F9A826",
+    backgroundColor: "lightblue",
     justifyContent: "center",
     alignItems: "center",
   },
+  img: {
+    borderRadius: 20,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginBottom: 20 ,
+  },
+
   logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
+    width: 90,
+    height: 90,
+    borderRadius: 20, // half of width/height to make it round
+    resizeMode: "cover", // better for circular images
   },
 });
 

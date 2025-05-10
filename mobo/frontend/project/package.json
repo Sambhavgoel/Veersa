@@ -10,18 +10,27 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-community/datetimepicker": "^8.3.0",
     "@react-navigation/native": "^7.1.8",
     "@react-navigation/stack": "^7.3.1",
     "axios": "^1.9.0",
     "expo": "~53.0.9",
+    "expo-location": "~18.1.4",
+    "expo-notifications": "~0.31.1",
     "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
-    "react-native": "0.79.2",
+    "react-native": "^0.79.2",
+    "react-native-calendar-picker": "^8.0.5",
     "react-native-gesture-handler": "~2.24.0",
+    "react-native-maps": "1.20.1",
+    "react-native-push-notification": "^8.1.1",
     "react-native-reanimated": "~3.17.4",
-    "react-native-safe-area-context": "5.4.0",
-    "react-native-screens": "~4.10.0",
-    "react-native-svg": "15.11.2"
+    "react-native-safe-area-context": "^3.1.9",
+    "react-native-screens": "3.10.0",
+    "react-native-svg": "15.11.2",
+    "react-native-vector-icons": "^10.2.0",
+    "react-navigation": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
