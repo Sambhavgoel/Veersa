@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -6,149 +6,175 @@ import {
   ScrollView,
   StyleSheet,
   Image,
+  SafeAreaView,
+  Animated,
+  Dimensions
 } from "react-native";
-import DoctorCarousel from "../components/DoctorCarousel";
-import BottomNav from "../components/BottomNav";
-import Speciality from "../components/Speciality";
-import Availability from "../components/Availability";
-import FAQSection from "../components/Faqsection";
-import AppointmentBooking from "../components/AppointmentScreen";
-import DoctorDashboard from "../components/DoctorDashboard";
+
+import DoctorCarousel from "../components/HomePage/DoctorCarousel";
+import BottomNav from "../components/HomePage/BottomNav";
+import Speciality from "../components/HomePage/Speciality";
+import Availability from "../components/HomePage/Availability";
+import FAQSection from "../components/HomePage/Faqsection";
+import ConnectCards from "../components/HomePage/ConnectCards";
+
+const screenWidth = Dimensions.get("window").width;
 
 const HomePage = ({ navigation }) => {
+  const [menuVisible, setMenuVisible] = useState(false);
+  const slideAnim = useRef(new Animated.Value(screenWidth)).current;
+
+  const openMenu = () => {
+    setMenuVisible(true);
+    Animated.timing(slideAnim, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const closeMenu = () => {
+    Animated.timing(slideAnim, {
+      toValue: screenWidth,
+      duration: 300,
+      useNativeDriver: false,
+    }).start(() => {
+      setMenuVisible(false);
+    });
+  };
+
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.side}>
-          <Image
-            source={require("../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg")}
-            style={styles.logo}
-          />
+    <SafeAreaView style={styles.wholecontainer}>
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <View style={styles.side}>
+            <Image
+              source={require("../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg")}
+              style={styles.logo}
+            />
+          </View>
+          <View style={styles.center}>
+            <Text style={styles.title}>Innovitals</Text>
+          </View>
+          <TouchableOpacity style={styles.side} onPress={openMenu}>
+            <Text style={styles.menuIcon}>☰</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.center}>
-          <Text style={styles.title}>Innovitals</Text>
-        </View>
-        <TouchableOpacity
-          style={styles.side}
-          onPress={() => navigation.navigate("Menu")}
-        >
-          <Text style={styles.menuIcon}>☰</Text>
-        </TouchableOpacity>
+
+        {/* Scrollable content */}
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <DoctorCarousel />
+          <View style={styles.buttonsRow}>
+            <TouchableOpacity
+              style={styles.buttonBox}
+              onPress={() => navigation.navigate("Menu")}
+            >
+              <Text style={styles.buttonText}>Instant Consultation</Text>
+              <Image
+                source={require("../assets/favicon.png")}
+                style={styles.bboximg}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonBox}
+              onPress={() => navigation.navigate("Menu")}
+            >
+              <Text style={styles.buttonText}>Hospitals Near Me</Text>
+              <Image
+                source={require("../assets/icon.png")}
+                style={styles.bboximg}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity style={styles.ambulanceButton}>
+            <Text style={styles.ambulanceText}>🚨 Need Ambulance 🚨</Text>
+          </TouchableOpacity>
+
+          <Speciality />
+          <Availability />
+          <ConnectCards />
+          <FAQSection />
+          
+        </ScrollView>
+
+        <BottomNav />
+
+        {/* Slide-in Hamburger Menu */}
+        {menuVisible && (
+          <Animated.View style={[styles.menuOverlay, { transform: [{ translateX: slideAnim }] }]}>
+            <View style={styles.menuContent}>
+              <TouchableOpacity onPress={closeMenu}>
+                <Text style={styles.closeText}>✕ Close</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("AmbulanceHomeScreen");
+                }}
+              >
+                <Text style={styles.menuItem}>Ambulance</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("Appointment");
+                }}
+              >
+                <Text style={styles.menuItem}>Appointment</Text>
+              </TouchableOpacity>
+              {/* <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("Emergency");
+                }}
+              >
+                <Text style={styles.menuItem}>Emergency</Text>
+              </TouchableOpacity> */}
+              <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("Login");
+                }}
+              >
+                <Text style={styles.menuItem}>Login</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("DoctorCategoryPage");
+                }}
+              >
+                <Text style={styles.menuItem}>Doctors</Text>
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        )}
       </View>
-
-      {/* Scrollable content */}
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-
-        <DoctorCarousel></DoctorCarousel>
-
-        <View style={styles.buttonsRow}>
-          <TouchableOpacity
-            style={styles.buttonBox}
-            onPress={() => navigation.navigate("Menu")}
-          >
-            <Text style={styles.buttonText}>Instant Consultation</Text>
-            <Image
-              source={require("../assets/favicon.png")}
-              style={styles.bboximg}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.buttonBox}
-            onPress={() => navigation.navigate("Menu")}
-          >
-            <Text style={styles.buttonText}>Hospitals Near Me</Text>
-            <Image
-              source={require("../assets/icon.png")}
-              style={styles.bboximg}
-            />
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={styles.ambulanceButton}>
-          <Text style={styles.ambulanceText}>🚨 Need Ambulance 🚨</Text>
-        </TouchableOpacity>
-
-        <Speciality></Speciality>
-        <Availability></Availability>
-        <FAQSection></FAQSection>
-        <AppointmentBooking></AppointmentBooking>
-        <DoctorDashboard></DoctorDashboard>
-
-      </ScrollView>
-      <BottomNav></BottomNav>
-    </View>
+    </SafeAreaView>
   );
 };
 
 export default HomePage;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, },
-  img: {
-    borderRadius: 20,
-    overflow: "hidden",
-    borderWidth: 1,
-    borderColor: "#ccc",
-  },
-
-  logo: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    resizeMode: "cover",
-  },
+  wholecontainer: { flex: 1, paddingBottom: 40 },
+  container: { flex: 1 },
+  logo: { width: 30, height: 30, borderRadius: 15, resizeMode: "cover" },
   header: {
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-between",
-  paddingHorizontal: 12,
-  paddingVertical: 25,
-  backgroundColor: "#fff",
-},
-side: {
-  width: 40,
-  alignItems: "center",
-  justifyContent: "center",
-},
-
-center: {
-  flex: 1,
-  alignItems: "center",
-},
-title: {
-  fontSize: 20,
-  fontWeight: "bold",
-  color: "#333",
-},
-
-logo: {
-  width: 30,
-  height: 30,
-  borderRadius: 15,
-},
-
-menuIcon: {
-  fontSize: 24,
-  color: "#333",
-},
-  scrollContent: { padding: 20 },
-  sectionTitle: { fontSize: 20, marginBottom: 10, fontWeight: 80 },
-  doctorCard: {
     flexDirection: "row",
-    padding: 15,
-    backgroundColor: "#e6e6e6",
-    borderRadius: 10,
-    marginBottom: 20,
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 12,
+    paddingVertical: 25,
+    backgroundColor: "#fff",
   },
-  doctorAvatar: {
-    width: 50,
-    height: 50,
-    backgroundColor: "#bbb",
-    borderRadius: 25,
-    marginRight: 15,
-  },
-  doctorInfo: { justifyContent: "center" },
+  side: { width: 40, alignItems: "center", justifyContent: "center" },
+  center: { flex: 1, alignItems: "center" },
+  title: { fontSize: 20, fontWeight: "bold", color: "#333" },
+  menuIcon: { fontSize: 24, color: "#333" },
+  scrollContent: { padding: 20 },
   buttonsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -174,5 +200,34 @@ menuIcon: {
     width: 120,
     height: 120,
     resizeMode: "contain",
+  },
+
+  // Hamburger styles
+  menuOverlay: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: 250,
+    backgroundColor: "#fff",
+    zIndex: 100,
+    elevation: 5,
+  },
+  menuContent: {
+    flex: 1,
+    paddingTop: 60,
+    paddingHorizontal: 20,
+  },
+  menuItem: {
+    fontSize: 18,
+    marginVertical: 15,
+    fontWeight: "500",
+    color: "#333",
+  },
+  closeText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    alignSelf: "flex-end",
   },
 });

@@ -23,9 +23,10 @@ app.get('/', (req, res) => {
   res.send('🚑 Ambulance backend is running!');
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('Server is running on port 5000');
 });
+
 
 // ... previous code
 const requestRoutes = require('./routes/requestRoutes');

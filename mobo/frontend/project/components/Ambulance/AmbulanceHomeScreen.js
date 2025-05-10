@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Alert, ActivityIndicator } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
-import { sendEmergencyRequest } from '../services/api';
+import { sendEmergencyRequest } from '../../services/api';
 
-const HomeScreen = () => {
+const AmbulanceHomeScreen = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [initialRegion, setInitialRegion] = useState(null);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('Status');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const HomeScreen = () => {
         <ActivityIndicator size="large" color="#e53935" />
       )}
 
-      <Button title="Confirm Location & Send Request" onPress={handleConfirmLocation} disabled={loading} />
+      <Button style={styles.btn} title="Confirm Location & Send Request" onPress={handleConfirmLocation} disabled={loading} />
 
       <Text style={styles.status}>{status}</Text>
     </View>
@@ -81,9 +81,10 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  title: { textAlign: 'center', fontSize: 20, marginVertical: 10 },
+  title: { textAlign: 'center', fontSize: 20, marginVertical: 10, paddingTop:30, },
   map: { flex: 1 },
-  status: { textAlign: 'center', margin: 10, fontSize: 16 },
+  status: { textAlign: 'center', margin: 10, fontSize: 16,paddingBottom:40,  },
+  btn: { textAlign: 'center', fontSize: 20,padding:20, },
 });
 
-export default HomeScreen;
+export default AmbulanceHomeScreen;

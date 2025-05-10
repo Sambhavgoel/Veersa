@@ -16,37 +16,37 @@ const specialities = [
   {
     id: "1",
     name: "Gynaecology",
-    image: require("../assets/adaptive-icon.png"),
+    image: require("../../assets/adaptive-icon.png"),
     navigationTarget: "GynaecologyScreen",
   },
   {
     id: "2",
     name: "Sexology",
-    image: require("../assets/favicon.png"),
+    image: require("../../assets/favicon.png"),
     navigationTarget: "SexologyScreen",
   },
   {
     id: "3",
     name: "General physician",
-    image: require("../assets/icon.png"),
+    image: require("../../assets/icon.png"),
     navigationTarget: "PhysicianScreen",
   },
   {
     id: "4",
     name: "Dermatology",
-    image: require("../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg"),
+    image: require("../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg"),
     navigationTarget: "DermatologyScreen",
   },
   {
     id: "5",
     name: "Psychiatry",
-    image: require("../assets/splash-icon.png"),
+    image: require("../../assets/splash-icon.png"),
     navigationTarget: "PsychiatryScreen",
   },
   {
     id: "6",
     name: "Stomach and digestion",
-    image: require("../assets/favicon.png"),
+    image: require("../../assets/favicon.png"),
     navigationTarget: "StomachScreen",
   },
 ];
