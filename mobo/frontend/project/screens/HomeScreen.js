@@ -8,7 +8,8 @@ import {
   Image,
   SafeAreaView,
   Animated,
-  Dimensions
+  Dimensions,
+  Linking
 } from "react-native";
 
 import DoctorCarousel from "../components/HomePage/DoctorCarousel";
@@ -43,6 +44,13 @@ const HomePage = ({ navigation }) => {
     });
   };
 
+  const openWhatsApp = () => {
+      const url = `whatsapp://send?phone=${+919205726389}&text=${"Write your problem"}`;
+      Linking.openURL(url).catch(() => {
+        Alert.alert('Error', 'Make sure WhatsApp is installed');
+      });
+  }
+
   return (
     <SafeAreaView style={styles.wholecontainer}>
       <View style={styles.container}>
@@ -68,7 +76,7 @@ const HomePage = ({ navigation }) => {
           <View style={styles.buttonsRow}>
             <TouchableOpacity
               style={styles.buttonBox}
-              onPress={() => navigation.navigate("Menu")}
+              onPress={openWhatsApp}
             >
               <Text style={styles.buttonText}>Instant Consultation</Text>
               <Image
@@ -78,7 +86,7 @@ const HomePage = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.buttonBox}
-              onPress={() => navigation.navigate("Menu")}
+              onPress={() => navigation.navigate("HospitalsNearme")}
             >
               <Text style={styles.buttonText}>Hospitals Near Me</Text>
               <Image
@@ -88,8 +96,8 @@ const HomePage = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.ambulanceButton}>
-            <Text style={styles.ambulanceText}>🚨 Need Ambulance 🚨</Text>
+          <TouchableOpacity style={styles.ambulanceButton} onPress={()=>navigation.navigate("AmbulanceHomeScreen")}>
+            <Text style={styles.ambulanceText}>🚨 Emergency Ambulance 🚨</Text>
           </TouchableOpacity>
 
           <Speciality />
@@ -99,7 +107,8 @@ const HomePage = ({ navigation }) => {
           
         </ScrollView>
 
-        <BottomNav />
+        <BottomNav navigation={navigation} />
+
 
         {/* Slide-in Hamburger Menu */}
         {menuVisible && (
@@ -114,15 +123,15 @@ const HomePage = ({ navigation }) => {
                   navigation.navigate("AmbulanceHomeScreen");
                 }}
               >
-                <Text style={styles.menuItem}>Ambulance</Text>
+                <Text style={styles.menuItem}>Emergency Ambulance</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
                   closeMenu();
-                  navigation.navigate("Appointment");
+                  navigation.navigate("Reminder");
                 }}
               >
-                <Text style={styles.menuItem}>Appointment</Text>
+                <Text style={styles.menuItem}>Your Appointment Slots</Text>
               </TouchableOpacity>
               {/* <TouchableOpacity
                 onPress={() => {
@@ -138,7 +147,7 @@ const HomePage = ({ navigation }) => {
                   navigation.navigate("Login");
                 }}
               >
-                <Text style={styles.menuItem}>Login</Text>
+                <Text style={styles.menuItem}>Register</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
@@ -146,7 +155,15 @@ const HomePage = ({ navigation }) => {
                   navigation.navigate("DoctorCategoryPage");
                 }}
               >
-                <Text style={styles.menuItem}>Doctors</Text>
+                <Text style={styles.menuItem}>Book a slot</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("Contact");
+                }}
+              >
+                <Text style={styles.menuItem}>Contact Us</Text>
               </TouchableOpacity>
             </View>
           </Animated.View>
@@ -190,7 +207,7 @@ const styles = StyleSheet.create({
   buttonText: { fontSize: 16, textAlign: "center" },
   ambulanceButton: {
     backgroundColor: "lightblue",
-    padding: 50,
+    padding: 40,
     borderRadius: 10,
   },
   ambulanceText: { fontSize: 18, textAlign: "center", color: "black" },

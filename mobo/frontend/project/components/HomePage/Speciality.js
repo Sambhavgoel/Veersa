@@ -15,39 +15,39 @@ const { width } = Dimensions.get("window");
 const specialities = [
   {
     id: "1",
-    name: "Gynaecology",
+    name: "Cardiologist",
     image: require("../../assets/adaptive-icon.png"),
-    navigationTarget: "GynaecologyScreen",
+    navigationTarget: "CardiologistPage",
   },
   {
     id: "2",
-    name: "Sexology",
+    name: "Dentist",
     image: require("../../assets/favicon.png"),
-    navigationTarget: "SexologyScreen",
+    navigationTarget: "DentistPage",
   },
   {
     id: "3",
-    name: "General physician",
+    name: "Pediatrician",
     image: require("../../assets/icon.png"),
-    navigationTarget: "PhysicianScreen",
+    navigationTarget: "PediatricianPage",
   },
   {
     id: "4",
-    name: "Dermatology",
+    name: "Dermatologist",
     image: require("../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg"),
-    navigationTarget: "DermatologyScreen",
+    navigationTarget: "DermatologistPage",
   },
   {
     id: "5",
-    name: "Psychiatry",
+    name: "Psychiatrist",
     image: require("../../assets/splash-icon.png"),
-    navigationTarget: "PsychiatryScreen",
+    navigationTarget: "PsychiatristPage",
   },
   {
     id: "6",
-    name: "Stomach and digestion",
+    name: "Orthopedic",
     image: require("../../assets/favicon.png"),
-    navigationTarget: "StomachScreen",
+    navigationTarget: "OrthopedicPage",
   },
 ];
 

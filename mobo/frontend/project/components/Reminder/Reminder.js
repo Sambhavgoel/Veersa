@@ -18,7 +18,7 @@ const appointmentData = [
     id: '1',
     name: 'Dr. Smith',
     date: '2025-05-11', // YYYY-MM-DD
-    time: '05:38',       // HH:MM in 24-hour format
+    time: '12:21',       // HH:MM in 24-hour format
     Latitudes: 28.4089,
     Longitudes: 77.3178,
     Latituded: 28.6588,
@@ -127,7 +127,7 @@ const Reminder = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Appointments</Text>
+      <Text style={styles.title}>Your Appointment Slots</Text>
       <FlatList
         data={appointmentData}
         keyExtractor={(item) => item.id}

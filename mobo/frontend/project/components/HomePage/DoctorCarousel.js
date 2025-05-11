@@ -9,6 +9,9 @@ import {
   Dimensions,
 } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
+
+
 const { height } = Dimensions.get("window");
 
 const doctors = [
@@ -39,6 +42,7 @@ const doctors = [
 ];
 
 const DoctorCarousel = () => {
+  const navigation = useNavigation();
   const flatListRef = useRef();
   const [index, setIndex] = useState(0);
 
@@ -60,7 +64,12 @@ const DoctorCarousel = () => {
         <Text style={styles.desc}>🏥 {item.hospital}</Text>
         <Text style={styles.desc}>🔬 {item.specialty}</Text>
         <Text style={styles.desc}>📆 {item.experience}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("ScheduleComponent", { doctor: item })
+          }
+        >
           <Text style={styles.buttonText}>Book Appointment</Text>
         </TouchableOpacity>
       </View>
@@ -89,17 +98,16 @@ const DoctorCarousel = () => {
 export default DoctorCarousel;
 
 const styles = StyleSheet.create({
-    all:{
-        backgroundColor: "lightblue",
-        padding:5,
-        borderRadius:15,
-        marginBottom:10,
-    },
+  all: {
+    backgroundColor: "lightblue",
+    padding: 5,
+    borderRadius: 15,
+    marginBottom: 10,
+  },
   sectionTitle: {
     fontSize: 20,
     marginBottom: 10,
     fontWeight: 80,
-
   },
   card: {
     flexDirection: "row",

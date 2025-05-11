@@ -46,10 +46,10 @@ const doctors = [
   },
 ];
 
-const CardiologistPage = ({ navigation }) => {
+const DermatologistPage = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.searchBar}>Cardiologist</Text>
+      <Text style={styles.searchBar}>Dermatologist</Text>
       <Text style={styles.locationText}>Near your location</Text>
 
       {doctors.map((doc, index) => (
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardiologistPage;
+export default DermatologistPage;

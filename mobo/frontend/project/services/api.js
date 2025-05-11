@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://192.168.56.1:5000/api'; // Replace with YOUR IP
+const BASE_URL = 'http://192.168.38.201:5000/api'; // Replace with YOUR IP
 
 export const sendEmergencyRequest = async (userId, location) => {
   try {

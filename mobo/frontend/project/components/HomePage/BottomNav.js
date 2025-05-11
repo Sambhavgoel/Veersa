@@ -1,18 +1,19 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, navigation } from "react-native";
+import Reminder from '../Reminder/Reminder'
 
 const BottomNav = ({ navigation }) => {
   return (
     <View style={styles.bottomNav}>
-      <TouchableOpacity onPress={() => navigation.navigate("Emergency")}>
+      <TouchableOpacity onPress={() => navigation.navigate("AmbulanceHomeScreen")}>
         <Text style={styles.navIcon}>🚑</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Reminder')}>
         <Text style={styles.navIcon}>⏰</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Appointment")}>
+      {/* <TouchableOpacity onPress={() => navigation.navigate("DoctorCategoryPage")}>
         <Text style={styles.navIcon}>📅</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <Text style={styles.navIcon}>👤</Text>
       </TouchableOpacity>

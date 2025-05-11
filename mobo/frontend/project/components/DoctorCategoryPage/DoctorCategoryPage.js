@@ -8,28 +8,28 @@ const doctors = [
     image: 'https://randomuser.me/api/portraits/women/44.jpg',
   },
   {
-    name: 'Cardiologist',
-    Page: 'Cardiologist',
+    name: 'Orthopedic',
+    Page: 'OrthopedicPage',
     image: 'https://randomuser.me/api/portraits/men/32.jpg',
   },
   {
-    name: 'Cardiologist',
-    Page: 'Cardiologist',
+    name: 'Pediatrician',
+    Page: 'PediatricianPage',
     image: 'https://randomuser.me/api/portraits/women/65.jpg',
   },
   {
-    name: 'Cardiologist',
-    Page: 'Cardiologist',
+    name: 'Psychiatrist',
+    Page: 'PsychiatristPage',
     image: 'https://randomuser.me/api/portraits/men/76.jpg',
   },
   {
-    name: 'Cardiologist',
-    Page: 'Cardiologist',
+    name: 'Dermatologist',
+    Page: 'DermatologistPage',
     image: 'https://randomuser.me/api/portraits/women/12.jpg',
   },
   {
-    name: 'Cardiologist',
-    Page: 'Cardiologist',
+    name: 'Dentist',
+    Page: 'DentistPage',
     image: 'https://randomuser.me/api/portraits/men/90.jpg',
   },
 ];
@@ -47,7 +47,7 @@ const DoctorCategoryPage = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TextInput style={styles.header} placeholder="doctors" placeholderTextColor="#444" />
+      <Text style={styles.header} placeholderTextColor="#444" >Speciality</Text>
       <FlatList
         data={doctors}
         renderItem={renderItem}
@@ -81,12 +81,13 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     margin: 10,
-    padding: 30,
+    padding: 24,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 15,
     alignItems: 'center',
     backgroundColor: '#f9f9f9',
+    height:180,
   },
   image: {
     width: 80,

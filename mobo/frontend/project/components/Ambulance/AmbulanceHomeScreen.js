@@ -42,7 +42,8 @@ const AmbulanceHomeScreen = () => {
         lat: selectedLocation.latitude,
         lng: selectedLocation.longitude,
       });
-      setStatus('🚨 Emergency request sent!');
+      setStatus('🚨 Emergency request accepted!');
+      Alert.alert("Ambulance is on the way")
     } catch (error) {
       console.error(error);
       Alert.alert('Error', 'Failed to send emergency request.');

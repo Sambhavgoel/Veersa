@@ -14,7 +14,6 @@ import { useNavigation } from "@react-navigation/native";
 const ScheduleComponent = ({ route }) => {
   const { doctor } = route.params;
   const navigation = useNavigation();
-
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -92,7 +91,7 @@ const ScheduleComponent = ({ route }) => {
     } else if (paymentSuccessful && !selectedSlot) {
       Alert.alert(
         "Payment Successful!",
-        `Now slot has been booked successfully\nDoctor Name: ${
+        `Your slot has been booked successfully\nDoctor Name: ${
           doctor.name
         }\nDate: ${date.toDateString()}\nTime: Not selected\nLocation: ${
           doctor.location || "Not specified"
@@ -122,7 +121,9 @@ const ScheduleComponent = ({ route }) => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
-        <Image source={{ uri: doctor.image }} style={styles.image} />
+        {/* <Image source={{ uri: doctor.image }} style={styles.image} /> */}
+        <Image source={doctor.image} style={styles.image} />
+
         <Text style={styles.name}>{doctor.name}</Text>
 
         <Text style={styles.label}>Calendar</Text>

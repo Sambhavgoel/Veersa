@@ -36,58 +36,33 @@ const FAQSection = () => {
   const navigation = useNavigation();
 
   const faqData = [
-    // {
-    //   title: 'Corporate Benefits',
-    //   subItems: [
-    //     { label: 'Applicability to Families', navigateTo: 'CorporateBenefitsFamilies' },
-    //     // Add more sub-items related to Corporate Benefits
-    //   ],
-    // },
-    // {
-    //   title: 'Practo Doctors',
-    //   subItems: [
-    //     { label: 'Qualification for Online Consultations', navigateTo: 'PractoQualification' },
-    //     // Add more sub-items related to Practo Doctors
-    //   ],
-    // },
-    // {
-    //   title: 'Doctor Consultation',
-    //   subItems: [
-    //     { label: 'Choice of Doctor', navigateTo: 'DoctorChoice' },
-    //     { label: 'Types of Consultations', navigateTo: 'ConsultationTypes' },
-    //     { label: 'How Online Consultations Work', navigateTo: 'HowItWorks' },
-    //     { label: 'In-Person Visits', navigateTo: 'InPersonVisits' },
-    //   ],
-    // },
-    // {
-    //   title: 'Innovitals',
-    //   subItems: [
-    //     { label: 'About Innovitals', navigateTo: 'InnovitalsAbout' },
-    //     { label: 'Contact Us', navigateTo: 'InnovitalsContact' },
-    //   ],
-    // },
     {
-      title: 'For Professionals',
+      title: 'How do I book an appointment with a doctor ?',
       subItems: [
-        { label: 'For Doctors', navigateTo: 'ForDoctors' },
-        // Add more sub-items for professionals
+        { label: 'You can search for a doctor by speciality, location, availability and book a slot instantly' },
+        
       ],
     },
     {
-      title: 'For Patients',
+      title: 'Can I consult doctors online ?',
       subItems: [
-        { label: 'Patient Services', navigateTo: 'ForPatients' },
-        // Add more sub-items for patients
+        { label: 'Yes you can connect with doctors via chat consultations with the app' },
       ],
     },
     {
-      title: 'Contact us',
+      title: 'How can I request an ambulance ?',
       subItems: [
-        { label: 'About Innovitals', navigateTo: 'InnovitalsAbout' },
-        { label: 'Contact Us', navigateTo: 'InnovitalsContact' },
+        { label: 'Tap the emergency ambulance button to automatically locate and connect with the nearest ambulance services' },
       ],
     },
-    // Add more main FAQ headings here
+    {
+      title: 'How can I contact support ?',
+      subItems: [
+        // { label: 'About Innovitals', navigateTo: 'InnovitalsAbout' },
+        { label: 'Go to the contact us section in the app and fil out the form- we will get back to you within 24 hours.', navigateTo: 'InnovitalsContact' },
+      ],
+    },
+
   ];
 
   const handleNavigation = (navigateTo) => {

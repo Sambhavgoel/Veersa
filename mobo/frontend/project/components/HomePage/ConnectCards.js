@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
-const cardWidth = (screenWidth - 60) / 3; // space for padding and margins
+const cardWidth = (screenWidth - 60) / 3; // 3 cards with spacing
 
 const ConnectCards = () => {
   const navigation = useNavigation();
@@ -17,37 +16,43 @@ const ConnectCards = () => {
     <View style={styles.container}>
       {/* Card 1 */}
       <View style={styles.card}>
-        <Text style={styles.text}>hospitals{"\n"}connect{"\n"}with us</Text>
+        <Text style={styles.text}>500+{"\n"}hospitals{"\n"}connect{"\n"}with us</Text>
         <TouchableOpacity
-          style={styles.exploreButton}
+          style={styles.imageButton}
           onPress={() => handleNavigate('Hospitals')}
         >
-          <Text style={styles.exploreText}>Explore more</Text>
-          <Icon name="arrow-right" size={16} color="#007AFF" />
+          <Image
+            source={require('../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg')}
+            style={styles.image}
+          />
         </TouchableOpacity>
       </View>
 
       {/* Card 2 */}
       <View style={styles.card}>
-        <Text style={styles.text}>doctors{"\n"}connect{"\n"}with us</Text>
+        <Text style={styles.text}>40K+{"\n"}doctors{"\n"}connect{"\n"}with us</Text>
         <TouchableOpacity
-          style={styles.exploreButton}
+          style={styles.imageButton}
           onPress={() => handleNavigate('Doctors')}
         >
-          <Text style={styles.exploreText}>Explore more</Text>
-          <Icon name="arrow-right" size={16} color="#007AFF" />
+          <Image
+            source={require('../../assets/favicon.png')}
+            style={styles.image}
+          />
         </TouchableOpacity>
       </View>
 
       {/* Card 3 */}
       <View style={styles.card}>
-        <Text style={styles.text}>people{"\n"}connect{"\n"}with us</Text>
+        <Text style={styles.text}>200K+{"\n"}people{"\n"}connect{"\n"}with us</Text>
         <TouchableOpacity
-          style={styles.exploreButton}
+          style={styles.imageButton}
           onPress={() => handleNavigate('People')}
         >
-          <Text style={styles.exploreText}>Explore more</Text>
-          <Icon name="arrow-right" size={16} color="#007AFF" />
+          <Image
+            source={require('../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg')}
+            style={styles.image}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -56,19 +61,17 @@ const ConnectCards = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "lightblue",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: 'lightblue',
     paddingVertical: 20,
     paddingHorizontal: 5,
     borderRadius: 20,
     marginBottom: 10,
-    
   },
   card: {
-    
     width: cardWidth,
-    height: 180,
+    height: 200,
     backgroundColor: '#fff',
     borderRadius: 16,
     borderWidth: 1,
@@ -87,16 +90,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     color: '#333',
+    lineHeight: 22,
   },
-  exploreButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
+  imageButton: {
+    width: '100%',
+    height: 80,
+    borderRadius: 10,
+    overflow: 'hidden',
   },
-  exploreText: {
-    color: '#007AFF',
-    fontSize: 13,
-    marginRight: 4,
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
 });
 
