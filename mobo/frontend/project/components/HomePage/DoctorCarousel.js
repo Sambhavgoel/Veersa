@@ -21,7 +21,7 @@ const doctors = [
     hospital: "City Children's Hospital",
     specialty: "Pediatrician",
     experience: "10 years",
-    image: require("../../assets/adaptive-icon.png"),
+    image: 'https://randomuser.me/api/portraits/men/76.jpg',
   },
   {
     id: "2",
@@ -29,7 +29,7 @@ const doctors = [
     hospital: "NeuroCare Clinic",
     specialty: "Neurologist",
     experience: "12 years",
-    image: require("../../assets/favicon.png"),
+    image: 'https://randomuser.me/api/portraits/men/90.jpg',
   },
   {
     id: "3",
@@ -37,7 +37,7 @@ const doctors = [
     hospital: "DermaGlow Center",
     specialty: "Dermatologist",
     experience: "8 years",
-    image: require("../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg"),
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
   },
 ];
 
@@ -58,7 +58,7 @@ const DoctorCarousel = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={item.image} style={styles.avatar} />
+      <Image source={{uri:item.image}}style={styles.avatar} />
       <View style={styles.info}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.desc}>🏥 {item.hospital}</Text>

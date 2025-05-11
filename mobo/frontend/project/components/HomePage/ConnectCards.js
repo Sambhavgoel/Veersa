@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'rea
 import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
-const cardWidth = (screenWidth - 60) / 3; // 3 cards with spacing
+const cardWidth = (screenWidth - 65) / 3; // 3 cards with spacing
 
 const ConnectCards = () => {
   const navigation = useNavigation();
@@ -16,43 +16,46 @@ const ConnectCards = () => {
     <View style={styles.container}>
       {/* Card 1 */}
       <View style={styles.card}>
-        <Text style={styles.text}>500+{"\n"}hospitals{"\n"}connect{"\n"}with us</Text>
+        <Text style={{fontWeight:"bold",fontSize:20}}>500K+</Text>
+        <Text style={styles.text}>{"\n"}Hospital{"\n"}connect{"\n"}with us</Text>
         <TouchableOpacity
           style={styles.imageButton}
           onPress={() => handleNavigate('Hospitals')}
         >
-          <Image
+          {/* <Image
             source={require('../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg')}
             style={styles.image}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
 
       {/* Card 2 */}
       <View style={styles.card}>
-        <Text style={styles.text}>40K+{"\n"}doctors{"\n"}connect{"\n"}with us</Text>
+        <Text style={{fontWeight:"bold",fontSize:20}}>40K+</Text>
+        <Text style={styles.text}>{"\n"}Doctors{"\n"}connect{"\n"}with us</Text>
         <TouchableOpacity
           style={styles.imageButton}
           onPress={() => handleNavigate('Doctors')}
         >
-          <Image
+          {/* <Image
             source={require('../../assets/favicon.png')}
             style={styles.image}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
 
       {/* Card 3 */}
       <View style={styles.card}>
-        <Text style={styles.text}>200K+{"\n"}people{"\n"}connect{"\n"}with us</Text>
+        <Text style={{fontWeight:"bold",fontSize:20}}>200K+</Text>
+        <Text style={styles.text}>{"\n"}People{"\n"}connect{"\n"}with us</Text>
         <TouchableOpacity
           style={styles.imageButton}
           onPress={() => handleNavigate('People')}
         >
-          <Image
+          {/* <Image
             source={require('../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg')}
             style={styles.image}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
     </View>

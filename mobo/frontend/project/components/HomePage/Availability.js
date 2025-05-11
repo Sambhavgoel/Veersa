@@ -5,17 +5,17 @@ const categories = [
   {
     id: "1",
     label: "Always Here",
-    image: require("../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg"),
+    image: require("../../assets/doctors.jpg"),
   },
   {
     id: "2",
     label: "Expert Care",
-    image: require("../../assets/favicon.png"),
+    image: require("../../assets/bones.jpg"),
   },
   {
     id: "3",
     label: "Hi-Tech Tools",
-    image: require("../../assets/icon.png"),
+    image: require("../../assets/abdulai-sayni-1QcLbPi3S7Y-unsplash.jpg"),
   },
 ];
 

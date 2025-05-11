@@ -1,34 +1,42 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const bodyParser = require('body-parser');
+
+const authRoutes = require('./routes/auth');
+const requestRoutes = require('./routes/requestRoutes'); // For ambulance requests
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 })
-.then(() => console.log('✅ MongoDB connected'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('🚑 Ambulance backend is running!');
-});
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log('Server is running on port 5000');
-});
-
-
-// ... previous code
-const requestRoutes = require('./routes/requestRoutes');
-
+// Routes
+app.use('/api/users', authRoutes);
 app.use('/api', requestRoutes);
+// app.use('/api', require('./routes/ambulanceRoute'));
+
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+app.listen(5000, '0.0.0.0', () => {
+  console.log(`Server is running on port 5000`);
+});

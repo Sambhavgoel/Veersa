@@ -16,37 +16,37 @@ const specialities = [
   {
     id: "1",
     name: "Cardiologist",
-    image: require("../../assets/adaptive-icon.png"),
+    image: require("../../assets/WhatsApp Image 2025-05-11 at 17.34.23 (2).jpeg"),
     navigationTarget: "CardiologistPage",
   },
   {
     id: "2",
     name: "Dentist",
-    image: require("../../assets/favicon.png"),
+    image: require("../../assets/WhatsApp Image 2025-05-11 at 17.34.26 (1).jpeg"),
     navigationTarget: "DentistPage",
   },
   {
     id: "3",
     name: "Pediatrician",
-    image: require("../../assets/icon.png"),
+    image: require("../../assets/WhatsApp Image 2025-05-11 at 17.34.23 (3).jpeg"),
     navigationTarget: "PediatricianPage",
   },
   {
     id: "4",
     name: "Dermatologist",
-    image: require("../../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg"),
+    image: require("../../assets/WhatsApp Image 2025-05-11 at 17.34.23.jpeg"),
     navigationTarget: "DermatologistPage",
   },
   {
     id: "5",
     name: "Psychiatrist",
-    image: require("../../assets/splash-icon.png"),
+    image: require("../../assets/WhatsApp Image 2025-05-11 at 17.34.26.jpeg"),
     navigationTarget: "PsychiatristPage",
   },
   {
     id: "6",
     name: "Orthopedic",
-    image: require("../../assets/favicon.png"),
+    image: require("../../assets/WhatsApp Image 2025-05-11 at 17.34.25 (1).jpeg"),
     navigationTarget: "OrthopedicPage",
   },
 ];

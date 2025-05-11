@@ -17,6 +17,9 @@ import DermatologistPage from '../components/DoctorCategoryPage/DermatologistPag
 import OrthopedicPage from '../components/DoctorCategoryPage/OrthopedicPage'
 import PediatricianPage from '../components/DoctorCategoryPage/PediatricianPage'
 import PsychiatristPage from '../components/DoctorCategoryPage/PsychiatristPage'
+import Login from '../components/Login/Login'
+// import MapAddressPicker from '../components/Login/MapAddressPicker';
+import Contact from '../components/Contact/Contact';
 
 
 const Stack = createStackNavigator();
@@ -42,6 +45,12 @@ export default function AppNavigator() {
         <Stack.Screen name="HospitalsNearme" component={HospitalsNearme}/>
         <Stack.Screen name="DoctorsNearme" component={DoctorsNearme}/>
         <Stack.Screen name="Whatsapp" component={Whatsapp}/>
+
+        <Stack.Screen name="Login" component={Login}/>
+        {/* <Stack.Screen name="MapAddressPicker" component={MapAddressPicker}/> */}
+        <Stack.Screen name="Contact" component={Contact}/>
+   
+
 
     </Stack.Navigator>
   );

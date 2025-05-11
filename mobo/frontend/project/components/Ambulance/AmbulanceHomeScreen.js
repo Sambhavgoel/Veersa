@@ -4,7 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { sendEmergencyRequest } from '../../services/api';
 
-const AmbulanceHomeScreen = () => {
+const AmbulanceHomeScreen = ({navigation}) => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [initialRegion, setInitialRegion] = useState(null);
   const [status, setStatus] = useState('Status');
@@ -42,8 +42,15 @@ const AmbulanceHomeScreen = () => {
         lat: selectedLocation.latitude,
         lng: selectedLocation.longitude,
       });
-      setStatus('🚨 Emergency request accepted!');
-      Alert.alert("Ambulance is on the way")
+      setStatus('🚨 Emergency request sent!');
+      Alert.alert("Success", "🚑 Ambulance is on the way!",
+      [
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('HomeScreen'), // 👈 navigate after alert
+        },
+      ]);
+      // navigation.navigate("HomeScreen");
     } catch (error) {
       console.error(error);
       Alert.alert('Error', 'Failed to send emergency request.');
@@ -61,6 +68,7 @@ const AmbulanceHomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>📍 Pick Emergency Location</Text>
+
       {initialRegion ? (
         <MapView
           style={styles.map}
@@ -73,19 +81,44 @@ const AmbulanceHomeScreen = () => {
         <ActivityIndicator size="large" color="#e53935" />
       )}
 
-      <Button style={styles.btn} title="Confirm Location & Send Request" onPress={handleConfirmLocation} disabled={loading} />
+      <View style={styles.buttonContainer}>
+        <Button
+          title={loading ? 'Sending...' : 'Confirm Location & Send Request'}
+          onPress={handleConfirmLocation}
+          disabled={loading}
+          color="#e53935"
+        />
+      </View>
 
       <Text style={styles.status}>{status}</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  title: { textAlign: 'center', fontSize: 20, marginVertical: 10, paddingTop:30, },
-  map: { flex: 1 },
-  status: { textAlign: 'center', margin: 10, fontSize: 16,paddingBottom:40,  },
-  btn: { textAlign: 'center', fontSize: 20,padding:20, },
-});
-
 export default AmbulanceHomeScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 30,
+    marginBottom:15,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 20,
+    marginVertical: 10,
+  },
+  map: {
+    flex: 1,
+  },
+  status: {
+    textAlign: 'center',
+    margin: 10,
+    fontSize: 16,
+    paddingBottom: 20,
+  },
+  buttonContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+});

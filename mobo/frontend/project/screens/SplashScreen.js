@@ -14,7 +14,7 @@ const SplashScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.img}>
         <Image
-          source={require("../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg")}
+          source={require("../assets/WhatsApp Image 2025-05-11 at 01.02.08.jpeg")}
           style={styles.logo}
         />
       </View>

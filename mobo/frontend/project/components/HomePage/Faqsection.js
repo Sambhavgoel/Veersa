@@ -59,7 +59,7 @@ const FAQSection = () => {
       title: 'How can I contact support ?',
       subItems: [
         // { label: 'About Innovitals', navigateTo: 'InnovitalsAbout' },
-        { label: 'Go to the contact us section in the app and fil out the form- we will get back to you within 24 hours.', navigateTo: 'InnovitalsContact' },
+        { label: 'Go to the contact us section in the app and fill out the form- we will get back to you within 24 hours.', navigateTo: 'InnovitalsContact' },
       ],
     },
 

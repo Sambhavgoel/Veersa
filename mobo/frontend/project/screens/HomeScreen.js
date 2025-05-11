@@ -58,7 +58,7 @@ const HomePage = ({ navigation }) => {
         <View style={styles.header}>
           <View style={styles.side}>
             <Image
-              source={require("../assets/sachin-khadka-84xJL3twcUk-unsplash.jpg")}
+              source={require("../assets/WhatsApp Image 2025-05-11 at 01.02.08.jpeg")}
               style={styles.logo}
             />
           </View>
@@ -80,7 +80,7 @@ const HomePage = ({ navigation }) => {
             >
               <Text style={styles.buttonText}>Instant Consultation</Text>
               <Image
-                source={require("../assets/favicon.png")}
+                source={require("../assets/WhatsApp Image 2025-05-11 at 17.34.24 (2).jpeg")}
                 style={styles.bboximg}
               />
             </TouchableOpacity>
@@ -90,14 +90,15 @@ const HomePage = ({ navigation }) => {
             >
               <Text style={styles.buttonText}>Hospitals Near Me</Text>
               <Image
-                source={require("../assets/icon.png")}
+                source={require("../assets/WhatsApp Image 2025-05-11 at 17.34.23 (1).jpeg")}
                 style={styles.bboximg}
               />
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity style={styles.ambulanceButton} onPress={()=>navigation.navigate("AmbulanceHomeScreen")}>
-            <Text style={styles.ambulanceText}>🚨 Emergency Ambulance 🚨</Text>
+            <Text style={styles.ambulanceText}><Image style={styles.img} source={require("../assets/WhatsApp Image 2025-05-11 at 17.34.25.jpeg")}/> 
+            Emergency Ambulance <Image style={styles.img} source={require("../assets/WhatsApp Image 2025-05-11 at 17.34.25.jpeg")}/> </Text>
           </TouchableOpacity>
 
           <Speciality />
@@ -131,7 +132,7 @@ const HomePage = ({ navigation }) => {
                   navigation.navigate("Reminder");
                 }}
               >
-                <Text style={styles.menuItem}>Your Appointment Slots</Text>
+                <Text style={styles.menuItem}>My Appointment</Text>
               </TouchableOpacity>
               {/* <TouchableOpacity
                 onPress={() => {
@@ -177,17 +178,18 @@ export default HomePage;
 
 const styles = StyleSheet.create({
   wholecontainer: { flex: 1, paddingBottom: 40 },
-  container: { flex: 1 },
-  logo: { width: 30, height: 30, borderRadius: 15, resizeMode: "cover" },
+  container: { flex: 1,backgroundColor: "#fff", },
+  logo: { width: 60, height: 60, borderRadius: 15, resizeMode: "cover" },
   header: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     paddingHorizontal: 12,
-    paddingVertical: 25,
-    backgroundColor: "#fff",
+    paddingVertical: 10,
+    backgroundColor: "white",
+    marginTop:40,
   },
-  side: { width: 40, alignItems: "center", justifyContent: "center" },
+  side: { width: 80, alignItems: "center", justifyContent: "center" },
   center: { flex: 1, alignItems: "center" },
   title: { fontSize: 20, fontWeight: "bold", color: "#333" },
   menuIcon: { fontSize: 24, color: "#333" },
@@ -204,10 +206,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 200,
   },
+  img:{
+    borderRadius:50,
+    width:40,
+    height:40,
+  },
   buttonText: { fontSize: 16, textAlign: "center" },
   ambulanceButton: {
     backgroundColor: "lightblue",
-    padding: 40,
+    paddingHorizontal: 20,
+    paddingVertical:50,
     borderRadius: 10,
   },
   ambulanceText: { fontSize: 18, textAlign: "center", color: "black" },

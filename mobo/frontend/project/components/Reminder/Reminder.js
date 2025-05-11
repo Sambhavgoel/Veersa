@@ -127,7 +127,7 @@ const Reminder = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Your Appointment Slots</Text>
+      <Text style={styles.title}>My Appointment</Text>
       <FlatList
         data={appointmentData}
         keyExtractor={(item) => item.id}
