@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createAppointment } from "../../services/api";
 
 const ScheduleComponent = ({ route }) => {
   const { doctor } = route.params;
@@ -51,13 +53,40 @@ const ScheduleComponent = ({ route }) => {
       doctor,
       appointmentDate: date.toDateString(),
       appointmentSlot: selectedSlot,
-      onPaymentSuccess: () => {
-        const dateKey = getFormattedDate(date);
-        setBookedSlots((prev) => ({
-          ...prev,
-          [dateKey]: [...(prev[dateKey] || []), selectedSlot],
-        }));
-        setPaymentSuccessful(true);
+      onPaymentSuccess: async () => {
+        try {
+          const stored = await AsyncStorage.getItem("currentUser");
+          const currentUser = stored ? JSON.parse(stored) : null;
+          const patientId = currentUser?.id;
+
+          if (!patientId) {
+            Alert.alert("Login required", "Please login as a patient to book an appointment.");
+            navigation.navigate("Login");
+            return;
+          }
+
+          const dateKey = getFormattedDate(date);
+
+          // Persist to MongoDB
+          await createAppointment({
+            doctorId: doctor?._id || doctor?.id || doctor?.doctorId,
+            patientId,
+            date: dateKey,
+            time: selectedSlot,
+            mode: "online",
+          });
+
+          // Local UI state
+          setBookedSlots((prev) => ({
+            ...prev,
+            [dateKey]: [...(prev[dateKey] || []), selectedSlot],
+          }));
+          setPaymentSuccessful(true);
+          Alert.alert("Booked", "Appointment saved to database.");
+        } catch (e) {
+          console.error(e);
+          Alert.alert("Error", "Payment succeeded but saving appointment failed.");
+        }
       },
     });
   };

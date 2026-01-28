@@ -35,7 +35,17 @@ router.post('/signup', async (req, res) => {
       });
       await newDoctor.save();
       console.log('Doctor signed up with location:', location);
-      return res.status(201).json({ message: 'Doctor registered successfully' });
+      return res.status(201).json({
+        message: 'Doctor registered successfully',
+        user: {
+          id: newDoctor._id,
+          role: 'doctor',
+          name: newDoctor.name,
+          email: newDoctor.email,
+          number: newDoctor.number,
+          location: newDoctor.location,
+        },
+      });
     }
 
     else if (role === 'patient') {
@@ -52,7 +62,17 @@ router.post('/signup', async (req, res) => {
       });
       await newPatient.save();
       console.log('Patient signed up with location:', location);
-      return res.status(201).json({ message: 'Patient registered successfully' });
+      return res.status(201).json({
+        message: 'Patient registered successfully',
+        user: {
+          id: newPatient._id,
+          role: 'patient',
+          name: newPatient.name,
+          email: newPatient.email,
+          number: newPatient.number,
+          location: newPatient.location,
+        },
+      });
     }
 
     res.status(400).json({ message: 'Invalid role' });
@@ -80,7 +100,17 @@ router.post('/login', async (req, res) => {
     if (!user) return res.status(404).json({ message: `${role} not found` });
     if (user.password !== password) return res.status(401).json({ message: 'Incorrect password' });
 
-    res.json({ message: `${role} logged in successfully` });
+    res.json({
+      message: `${role} logged in successfully`,
+      user: {
+        id: user._id,
+        role,
+        name: user.name,
+        email: user.email,
+        number: user.number,
+        location: user.location,
+      },
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });

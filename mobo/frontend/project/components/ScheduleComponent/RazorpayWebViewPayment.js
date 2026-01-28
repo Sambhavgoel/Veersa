@@ -3,7 +3,7 @@ import { View, ActivityIndicator, StyleSheet, Alert } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 const RazorpayWebViewPayment = ({ route, navigation }) => {
-  const { doctor, appointmentDate, appointmentSlot } = route.params;
+  const { doctor, appointmentDate, appointmentSlot, onPaymentSuccess } = route.params;
 
   const amountInPaise = 50000; // ₹500.00, change as needed
 
@@ -50,6 +50,9 @@ const RazorpayWebViewPayment = ({ route, navigation }) => {
       const data = JSON.parse(event.nativeEvent.data);
       if (data.success) {
         Alert.alert('Payment Successful', `Payment ID: ${data.response.razorpay_payment_id}`);
+        if (typeof onPaymentSuccess === 'function') {
+          onPaymentSuccess(data.response);
+        }
         navigation.goBack();
       } else {
         Alert.alert('Payment Cancelled', 'User dismissed the Razorpay popup.');

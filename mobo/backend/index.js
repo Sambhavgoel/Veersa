@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
 const requestRoutes = require('./routes/requestRoutes'); // For ambulance requests
+const appointmentRoutes = require('./routes/appointments');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 app.use('/api/users', authRoutes);
 app.use('/api', requestRoutes);
+app.use('/api/appointments', appointmentRoutes);
 // app.use('/api', require('./routes/ambulanceRoute'));
 
 

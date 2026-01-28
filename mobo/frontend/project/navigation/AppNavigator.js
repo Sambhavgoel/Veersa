@@ -20,6 +20,7 @@ import PsychiatristPage from '../components/DoctorCategoryPage/PsychiatristPage'
 import Login from '../components/Login/Login'
 // import MapAddressPicker from '../components/Login/MapAddressPicker';
 import Contact from '../components/Contact/Contact';
+import MyAppointments from '../screens/MyAppointments';
 
 
 const Stack = createStackNavigator();
@@ -49,6 +50,7 @@ export default function AppNavigator() {
         <Stack.Screen name="Login" component={Login}/>
         {/* <Stack.Screen name="MapAddressPicker" component={MapAddressPicker}/> */}
         <Stack.Screen name="Contact" component={Contact}/>
+        <Stack.Screen name="MyAppointments" component={MyAppointments}/>
    
 
 

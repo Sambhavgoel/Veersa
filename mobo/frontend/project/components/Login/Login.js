@@ -4,6 +4,8 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BASE_URL } from '../../services/api';
 
 const Login = ({ navigation }) => {
   const [mode, setMode] = useState('login');
@@ -54,7 +56,7 @@ const Login = ({ navigation }) => {
 
   const handleSubmit = async () => {
     try {
-      const endpoint = `http://192.168.38.201:5000/api/users/${mode}`;
+      const endpoint = `${BASE_URL}/api/users/${mode}`;
 
       if (mode === 'signup' && !location) {
         Alert.alert('Error', 'Please enter a valid address to fetch location.');
@@ -73,6 +75,12 @@ const Login = ({ navigation }) => {
       };
 
       const res = await axios.post(endpoint, data);
+
+      // Store logged-in user for later (appointments, requests, etc.)
+      if (res.data?.user?.id) {
+        await AsyncStorage.setItem('currentUser', JSON.stringify(res.data.user));
+      }
+
       Alert.alert('Success', res.data.message || `${mode} successful`,
       [
         {

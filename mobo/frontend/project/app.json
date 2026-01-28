@@ -1,6 +1,8 @@
 {
   "expo": {
-    "permissions": ["ACCESS_FINE_LOCATION"],
+    "permissions": [
+      "ACCESS_FINE_LOCATION"
+    ],
     "name": "project",
     "slug": "project",
     "version": "1.0.0",
@@ -21,10 +23,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.project"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "@react-native-community/datetimepicker"
+    ]
   }
 }
