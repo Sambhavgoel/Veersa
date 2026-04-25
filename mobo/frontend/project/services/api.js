@@ -1,28 +1,19 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-// Use your local IP if you're on a real device (same Wi‑Fi as server).
-export const BASE_URL = 'http://192.168.29.124:5000';
+const host = Constants.expoConfig.hostUri?.split(':').shift() || 'localhost';
+
+const api = axios.create({
+  baseURL: `http://${host}:5000/api`, // Added /api here to shorten calls
+});
 
 export const sendEmergencyRequest = async (userId, location) => {
-  const response = await axios.post(`${BASE_URL}/api/request`, {
-    userId,
-    location
-  });
-  return response.data;
-};
-
-export const createAppointment = async ({ doctorId, patientId, date, time, mode }) => {
-  const response = await axios.post(`${BASE_URL}/api/appointments`, {
-    doctorId,
-    patientId,
-    date,
-    time,
-    mode,
-  });
+  // No need to use ${BASE_URL} anymore!
+  const response = await api.post('/request', { userId, location });
   return response.data;
 };
 
 export const listAppointmentsForUser = async (userId) => {
-  const response = await axios.get(`${BASE_URL}/api/appointments/${userId}`);
+  const response = await api.get(`/appointments/${userId}`);
   return response.data;
 };

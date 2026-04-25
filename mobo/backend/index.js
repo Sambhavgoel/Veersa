@@ -1,3 +1,5 @@
+const dns = require('dns');
+dns.setDefaultResultOrder('ipv4first');
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -5,7 +7,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
-const requestRoutes = require('./routes/requestRoutes'); // For ambulance requests
+const requestRoutes = require('./routes/requestRoutes');
 const appointmentRoutes = require('./routes/appointments');
 
 const app = express();
