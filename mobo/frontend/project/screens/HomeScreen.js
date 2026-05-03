@@ -18,6 +18,8 @@ import Speciality from "../components/HomePage/Speciality";
 import Availability from "../components/HomePage/Availability";
 import FAQSection from "../components/HomePage/Faqsection";
 import ConnectCards from "../components/HomePage/ConnectCards";
+import ChatBot from "../components/model/ChatBot";
+import Predictor from "../components/model/Predictor";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -125,6 +127,21 @@ const HomePage = ({ navigation }) => {
                 }}
               >
                 <Text style={styles.menuItem}>Emergency Ambulance</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("Predictor");
+                }}
+              >
+                <Text style={styles.menuItem}>Heart Disease Prediction</Text>
+              </TouchableOpacity><TouchableOpacity
+                onPress={() => {
+                  closeMenu();
+                  navigation.navigate("ChatBot");
+                }}
+              >
+                <Text style={styles.menuItem}>Chat Bot</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {

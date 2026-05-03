@@ -21,6 +21,8 @@ import Login from '../components/Login/Login'
 // import MapAddressPicker from '../components/Login/MapAddressPicker';
 import Contact from '../components/Contact/Contact';
 import MyAppointments from '../screens/MyAppointments';
+import Predictor from '../components/model/Predictor';
+import ChatBot from '../components/model/ChatBot';
 
 
 const Stack = createStackNavigator();
@@ -51,6 +53,8 @@ export default function AppNavigator() {
         {/* <Stack.Screen name="MapAddressPicker" component={MapAddressPicker}/> */}
         <Stack.Screen name="Contact" component={Contact}/>
         <Stack.Screen name="MyAppointments" component={MyAppointments}/>
+        <Stack.Screen name="Predictor" component={Predictor}/>
+        <Stack.Screen name="ChatBot" component={ChatBot}/>
    
 
 

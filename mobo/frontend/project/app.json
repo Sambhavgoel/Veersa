@@ -8,16 +8,6 @@
 "userInterfaceStyle": "light",
 "newArchEnabled": true,
 
-"runtimeVersion": {
-  "policy": "appVersion"
-},
-
-"updates": {
-  "enabled": true,
-  "fallbackToCacheTimeout": 0,
-  "url": "https://u.expo.dev/appointment"
-},
-
 "permissions": [
   "ACCESS_FINE_LOCATION"
 ],

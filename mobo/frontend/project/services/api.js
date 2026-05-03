@@ -2,9 +2,10 @@ import axios from 'axios';
 import Constants from 'expo-constants';
 
 const host = Constants.expoConfig.hostUri?.split(':').shift() || 'localhost';
+export const BASE_URL = `http://${host}:5000`;
 
 const api = axios.create({
-  baseURL: `http://${host}:5000/api`, // Added /api here to shorten calls
+  baseURL: `${BASE_URL}/api`,
 });
 
 export const sendEmergencyRequest = async (userId, location) => {
@@ -15,5 +16,10 @@ export const sendEmergencyRequest = async (userId, location) => {
 
 export const listAppointmentsForUser = async (userId) => {
   const response = await api.get(`/appointments/${userId}`);
+  return response.data;
+};
+
+export const createAppointment = async (appointment) => {
+  const response = await api.post('/appointments', appointment);
   return response.data;
 };
